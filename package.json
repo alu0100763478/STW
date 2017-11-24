@@ -4,7 +4,7 @@
   "description": "Pyroyec de Sistemas y Tecnologías Web",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"	,
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,7 +19,9 @@
   "homepage": "https://github.com/alu0100763478/STW#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "mongo": "",
+    "mongoose": "^4.13.4"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
