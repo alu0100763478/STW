@@ -4,16 +4,22 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const Producto = require('./models/producto')
+const path = require('path');
 
 const app = express()
-const port = process.env.PORT || 3001
+
+app.use(express.static(__dirname + '/cliente'));
+
+app.set('port', (process.env.PORT || 8080)); 
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
-app.get('/api/product', (req,res) => {
-	res.send(200,{ productos: []})
-})
+app.get('/', function(req, res){
+  //res.send({ message:'Hola mundo' })
+	res.sendFile(path.join('index.html'));
+	
+});
 
 app.get('/api/product/:producID', (req,res) => {
 })
@@ -46,7 +52,7 @@ mongoose.connect('mongodb://localhost:27017/shop', (err,res) => {
 		console.log(`Error al conectar la base de datos: ${err}`)
 	}
 	console.log('Conexion a la base de datos establecida...')
-	app.listen(port,() =>{
-		console.log(`HOLA MUNDO en http://localhost:${port}`)
-	})
+	app.listen(app.get('port'), function() {
+		console.log("Node app is running at localhost:" + app.get('port'));
+	});
 })
