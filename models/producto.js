@@ -10,7 +10,8 @@ const ProductoSchema = Schema({
   ,'Ficción','Investigación','Biográfica','Infantil','Autoayuda','Erótica'
   ,'Hogar','Enciclopedia','Política','Economía','Sociedad','Deportes','Viajes'
   ,'Otros temas']},
-  descripcion: String
+  descripcion: String,
+  url: String
 })
 
 module.exports = mongoose.model('Producto', ProductoSchema)

@@ -34,6 +34,7 @@ app.post('/api/product', (req,res) => {
 	producto.pricture = req.body.picture
 	producto.categoria = req.body.categoria
 	producto.descripcion = req.body.descripcion
+	producto.url = req.body.url
 
 	producto.save((err,productoStored) => {
 		if (err) res.status(500).send({mensagge: `Error al salvar en la base de datos: ${err}`})
