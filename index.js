@@ -3,7 +3,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const Producto = require('./models/producto')
+const Libro = require('./models/producto')
 const path = require('path');
 
 const app = express()
@@ -21,7 +21,13 @@ app.get('/', function(req, res){
 	
 });
 
-app.get('/api/product/:producID', (req,res) => {
+app.get('/librosDisponibles', (req,res) => {
+	Libro.find({},function(err, libros) {
+		if(err) {
+			res.send(err);
+		}
+		res.send(libros);
+	});
 })
 
 app.post('/api/product', (req,res) => {
@@ -48,7 +54,8 @@ app.put('/api/product/:producID', (req,res) => {
 app.delete('/api/product/:producID', (req,res) => {
 })
 
-mongoose.connect('mongodb://localhost:27017/shop', (err,res) => {
+mongoose.connect('mongodb://localhost:27017/libros',{useMongoClient: true,}, (err,res) => {
+	
 	if(err){
 		console.log(`Error al conectar la base de datos: ${err}`)
 	}

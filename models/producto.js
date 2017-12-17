@@ -3,7 +3,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const ProductoSchema = Schema({
+const LibrosSchema = Schema({
   name: String,
   picture: String,
   categoria: { type: String, enum:['Policial','Romántica','Aventura','Terror'
@@ -14,4 +14,4 @@ const ProductoSchema = Schema({
   url: String
 })
 
-module.exports = mongoose.model('Producto', ProductoSchema)
+module.exports = mongoose.model('Libro',LibrosSchema)
