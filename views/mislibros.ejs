@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include partials/head %>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <% include partials/navBar %>    
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Mis libros</a>
+        </li>
+        <li class="breadcrumb-item active">Mis Libros</li>
+      </ol>
+      <!-- Icon Cards-->
+      <div class="row">
+        <strong>_id</strong>: <%= user._id %> <br>
+        <strong>email</strong>: <%= user.email %> <br>
+        <strong>password</strong>: <%= user.password %> <br>
+      </div>
+
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <% include partials/footer %>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+ 
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="js/sb-admin-charts.min.js"></script>
+
+  </div>
+</body>
+
+</html>

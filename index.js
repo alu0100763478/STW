@@ -1,60 +1,46 @@
 'use strict'
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const Libro = require('./models/producto')
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const url_login = require('./config/database');
+const passport = require('passport');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const flash = require('connect-flash');
 const path = require('path');
+const app = express();
 
-const app = express()
+require('./config/passport')(passport);
 
-app.use(express.static(__dirname + '/cliente'));
+// setting
+app.set('port', (process.env.PORT || 8080));
+app.use(bodyParser.json());
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-app.set('port', (process.env.PORT || 8080)); 
+//middlewares
+app.use(morgan('dev'));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(session({
+	secret: 'proyectoSTW201718',
+	resave: false,
+	saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+//routes
+require('./app/routes')(app,passport);
 
-app.get('/', function(req, res){
-  //res.send({ message:'Hola mundo' })
-	res.sendFile(path.join('index.html'));
-	
-});
+//static files
+app.use(express.static(__dirname + '/public'));
 
-app.get('/librosDisponibles', (req,res) => {
-	Libro.find({},function(err, libros) {
-		if(err) {
-			res.send(err);
-		}
-		res.send(libros);
-	});
-})
-
-app.post('/api/product', (req,res) => {
-	console.log('POST /api/producto')
-	console.log(req.body)
-
-//Creamos una variable llamada producto
-	let producto = new Producto()
-	producto.name = req.body.name
-	producto.pricture = req.body.picture
-	producto.categoria = req.body.categoria
-	producto.descripcion = req.body.descripcion
-	producto.url = req.body.url
-
-	producto.save((err,productoStored) => {
-		if (err) res.status(500).send({mensagge: `Error al salvar en la base de datos: ${err}`})
-	})
-	res.status(200).send({producto: productoStored})
-})
-
-app.put('/api/product/:producID', (req,res) => {
-})
-
-app.delete('/api/product/:producID', (req,res) => {
-})
-
-mongoose.connect('mongodb://localhost:27017/libros',{useMongoClient: true,}, (err,res) => {
+//conexion a base de datos 
+mongoose.connect(url_login.url,{useMongoClient: true,}, (err,res) => {
 	
 	if(err){
 		console.log(`Error al conectar la base de datos: ${err}`)
@@ -63,4 +49,4 @@ mongoose.connect('mongodb://localhost:27017/libros',{useMongoClient: true,}, (er
 	app.listen(app.get('port'), function() {
 		console.log("Node app is running at localhost:" + app.get('port'));
 	});
-})
+});
