@@ -30,3 +30,20 @@
 .botones{
     margin-left: 38%;
 }
+
+.inicio{
+    background: #0C0357;
+    background: -webkit-linear-gradient(to right, #a8e063, #56ab2f);
+    background: -linear-gradient(to right, #a8e063, #56ab2f);
+}
+
+.card-inicio{
+    width: 100%;
+    margin-top: 5%;
+}
+
+.inicio-texto{
+    text-shadow: inherit;
+    color: white;
+    margin-top: 15%;
+}

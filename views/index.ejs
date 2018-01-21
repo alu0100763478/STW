@@ -3,38 +3,60 @@
 
 <% include partials/head %>
 
-<body class="bg-dark">
+<body class="inicio">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="/mislibros">BibliotecaT</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-itemt">
+          <a class="nav-link text-right" href="quienesSomos.html">¿Quiénes somos?</a>
+        </li  
+      </ul>
+    </div>
+  </nav>
+
   <div class="container">
-    <div class="card card-login mx-auto mt-5">
-      <div class="card-header">
-        <h1 class="text-center">
-          <span class="fa fa-sign-in"></span> Inicia sesión
-        </h1>
+    <div class="row">
+      <div class="col-6 inicio-texto">
+        <h1><i>¿Quieres leer y compartir libros e historias?</i></h1>
+        <h3>Bibliotecate es una comunidad en donde puedes encontrar libros gratis y compartir relatos</h3>
       </div>
-      <div class="card-body">
-        
-        <% if(message.length >0) { %>
-          <div class="alert alert-danger">
-            <%= message %>
-          </div>  
-        <% } %>
-        
-        <form action="/" method="post">
-          <div class="form-group">
-            <label for="email">Correo electrónico</label>
-            <input class="form-control" name="email" type="email" aria-describedby="emailHelp" placeholder="email@example.com" required>
+      <div class="col-6 card-inicio">
+        <div class="card card-login mx-auto mt-5 ">
+          <div class="card-header">
+            <h1 class="text-center">
+              <span class="fa fa-sign-in"></span> Inicia sesión
+            </h1>
           </div>
-          <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input class="form-control" name="password" type="password" required>
+          <div class="card-body">
+            
+            <% if(message.length >0) { %>
+              <div class="alert alert-danger">
+                <%= message %>
+              </div>  
+            <% } %>
+            
+            <form action="/" method="post">
+              <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input class="form-control" name="email" type="email" aria-describedby="emailHelp" placeholder="email@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input class="form-control" name="password" type="password" required>
+              </div>
+              <input type="submit" class="btn btn-primary btn-block">
+            </form>
+            <hr>
+            <div class="text-center">
+              <p>¿No tienes cuenta todavía?<a href="/register"> Regístrate</a></p>
+            </div>
           </div>
-          <input type="submit" class="btn btn-primary btn-block">
-        </form>
-        <hr>
-        <div class="text-center">
-          <p>¿No tienes cuenta todavía?<a href="/register"> Regístrate</a></p>
-        </div>
-      </div>
+        </div>  
+      </div>  
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
