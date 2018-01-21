@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include partials/head %>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+      <!-- Navigation-->
+  <% include partials/navBar %>  
+
+   <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/mislibros">BibliotecaT</a>
+        </li>
+        <li class="breadcrumb-item active">Relatos de usuarios</li>
+      </ol>
+      <div class="row">
+        <div class="col-12">
+          <h1>Relatos de los usuarios</h1>
+          <hr>
+        </div>
+      </div>  
+      <% if(relato) { %>
+          <% for(var i=0;i<relato.length;i++){ %>
+            <div class="row">
+              <div class="col-12">
+                <div class="card border-secondary mb-3 card-relatos">
+                  <div class="card-header">Categoría: <%= relato[i].categoria %></div>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= relato[i].titulo %></h5>
+                      <p class="card-text"><%= relato[i].textoRelato %></p>
+                    </div>
+                  <div class="card-footer">
+                    <form action="/votarRelato" method="post" class="botones">
+                      <input type="submit" class="btn btn-primary btn-success" name="opinion" value="<%= relato[i].titulo %>: Me gustó">
+                      <input type="submit" class="btn btn-primary btn-danger" name="opinion" value="<%= relato[i].titulo %>: No me gustó">
+                    </form>
+                  </div>
+                </div>
+              </div>
+          </div>
+        <% } %>
+      <% } %>
+      <br>
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+
+  
+    <% include partials/footer %>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+ 
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="js/sb-admin-charts.min.js"></script>
+
+  </div>
+</body>
+
+</html>  

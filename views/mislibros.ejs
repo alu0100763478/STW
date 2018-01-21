@@ -5,23 +5,59 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
-  <% include partials/navBar %>    
+  <% include partials/navBar %>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Mis libros</a>
+          <a href="/mislibros">BibliotecaT</a>
         </li>
-        <li class="breadcrumb-item active">Mis Libros</li>
+        <li class="breadcrumb-item active">Mi Perfil</li>
       </ol>
-      <!-- Icon Cards-->
       <div class="row">
-        <strong>_id</strong>: <%= user._id %> <br>
-        <strong>email</strong>: <%= user.email %> <br>
-        <strong>password</strong>: <%= user.password %> <br>
+        <div class="col-6">
+          <div class="card">
+            <img class="card-img-top img-fluid img-profile" src="<%- user.picture%>" alt="Card image">
+            <div class="card-body">
+              <h4 class="card-title">Mi perfil</h4>
+              <p class="card-text"><strong>Email:</strong> <%= user.email %></p>
+              <p class="card-text"><strong>Nombre de usuario:</strong> <%= user.username %></p>
+              <a href="/editProfile" class="card-link">Editar perfil</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <h1>Mis relatos</h1>
+          <hr>
+          <strong>Número de relatos: </strong> <%= user.nrelatos %> <br>
+            <% if(relato) { %>
+              <strong>Relatos: <br></strong><br>
+                <div class="card-deck">
+                  <% for(var i=0;i<relato.length;i++){ %>
+                    <div class="card border-secondary mb-3">
+                      <div class="card-header">Categoría: <%= relato[i].categoria %></div>
+                      <div class="card-body">
+                        <h5 class="card-title"><%= relato[i].titulo %></h5>
+                        <p class="card-text"><%= relato[i].textoRelato %></p>
+                      </div>
+                      <div class="card-footer">
+                        <form action="/eliminarRelato" method="post">
+                          <input type="submit" class="btn btn-primary btn-block" name="relatoEliminar" value="Elimina <%= relato[i].titulo %>">
+                        </form>
+                      </div>
+                    </div>
+                    <% } %>
+                </div>
+            <% } %>
+            <br>
+            <hr>
+            <h2>¿Te apetece escribir? <br></h2>
+            <a class="nav-link" href="/crearRelato"><h4>Pincha aquí para crear un relato nuevo</h4></a>
+          </div>
+        </div>
       </div>
-
+    </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <% include partials/footer %>

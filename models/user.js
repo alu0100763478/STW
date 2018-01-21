@@ -7,6 +7,8 @@ const bcrypt = require('bcrypt-nodejs');
 const UserSchema = Schema({
   email: String,
   username: String,
+  picture: String,
+  nrelatos: Number,
   password: String
 });
 

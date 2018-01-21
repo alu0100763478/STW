@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<% include partials/head %>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <% include partials/navBar %>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/mislibros">BibliotecaT</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="/mislibros">Mi Perfil</a>
+        </li>
+        <li class="breadcrumb-item active">Editar Perfil</li>
+      </ol>
+      <div class="row">
+        <div class="col-6">
+          <div class="card">
+            <img class="card-img-top img-fluid img-profile" src="<%- user.picture%>">
+            <div class="card-body">
+              <h4 class="card-title">Mi perfil</h4>
+              <p class="card-text"><strong>Email:</strong> <%= user.email %></p>
+              <p class="card-text"><strong>Nombre de usuario:</strong> <%= user.username %></p>
+            </div>
+          </div>
+          <p>
+        </div> <!-- /.end class card-prifile -->
+        <div class="col-6">
+          <h1>Editar perfil</h1>
+          <hr>
+          <div>
+              <h4>Correo electrónico</h4>
+              <div>
+                <form action="/editEmail" method="post">
+                      <div class="form-group">
+                        <label for="newemail">Nuevo correo electrónico</label>
+                        <input class="form-control" name="newEmail" type="email" aria-describedby="emailHelp" placeholder="email@example.com">
+                      </div>
+                    </div>
+                      <input type="submit" class="btn btn-primary btn-block">
+                </form>
+              </div> 
+          <div>
+              <hr>
+              <h4>Cambiar imagen</h4>
+              <div>
+                <form class="form-inline" action="/editImg" method="post">
+                    <div class="form-group col-7">
+                    <label class="lavel">
+                        <img class="img-fluid img-editprofile2" src="img/female.png"><br><input type="radio" name="img" value="img/female.png"><br>
+                        <img class="img-fluid img-editprofile" src="https://gravatar.com/avatar/?s=200&d=robohash"><br><input type="radio" name="img" value="https://gravatar.com/avatar/?s=200&d=robohash"><br>
+                        <img class="img-fluid img-editprofile2" src="img/female2.png"><br><input type="radio" name="img" value="img/female2.png"><br>
+                     </label>
+                     <label class="lavel">
+                        <img class="img-fluid img-editprofile" src="https://gravatar.com/avatar/?s=200&d=wavatar"><br><input type="radio" name="img" value="https://gravatar.com/avatar/?s=200&d=wavatar"><br>
+                        <img class="img-fluid img-editprofile" src="https://gravatar.com/avatar/?s=200&d=monsterid"><br><input type="radio" name="img" value="https://gravatar.com/avatar/?s=200&d=monsterid"><br>
+                        <img class="img-fluid img-editprofile2" src="img/male2.png"><br><input type="radio" name="img" value="img/male2.png"><br>
+                    </label>
+                    <label class="lavel">    
+                        <img class="img-fluid img-editprofile" src="https://gravatar.com/avatar/?s=200&d=identicon"><br><input type="radio" name="img" value="https://gravatar.com/avatar/?s=200&d=identicon"><br>
+                        <img class="img-fluid img-editprofile" src="https://gravatar.com/avatar/?s=200&d=mm"><br><input type="radio" name="img" value="https://gravatar.com/avatar/?s=200&d=mm"><br>
+                        <img class="img-fluid img-editprofile2" src="img/photo3.png"><br><input type="radio" name="img" value="img/photo3.png"><br>
+                    </label>
+                    
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-block">
+                </form>
+              </div>
+          </div>
+          <div>
+              <hr>
+              <h4>Usuario</h4>
+              <div>
+                <form action="/editUsername" method="post">
+                    <div class="form-group">
+                        <label for="username">Nuevo nombre de usuario</label>
+                        <input class="form-control" name="username" type="text">
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-block">
+                </form>
+              </div>
+           </div><!-- /.end username -->
+          </div>
+        </div><!-- /.end class row -->
+      </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <% include partials/footer %>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+ 
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/chart.js/Chart.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-datatables.min.js"></script>
+    <script src="js/sb-admin-charts.min.js"></script>
+
+  </div>
+</body>
+
+</html>

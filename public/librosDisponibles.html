@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  ng-app="aplicacion">
+<html lang="es"  ng-app="aplicacion">
 
 <head>
   <meta charset="utf-8">
@@ -25,7 +25,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top" ng-controller="Libros" ng-init="cargarLibros()">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="/mislibros">Biblioteca</a>
+    <a class="navbar-brand" href="/mislibros">BibliotecaT</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,14 +33,20 @@
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="MisLibros">
           <a class="nav-link" href="/mislibros">
-            <i class="fa fa-book" aria-hidden="true"></i>
-            <span class="nav-link-text">Mis libros</span>
+            <i class="fa fa-user-circle " aria-hidden="true"></i>
+            <span class="nav-link-text">Mi perfil</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="librosDisponibles">
           <a class="nav-link" href="librosDisponibles.html">
             <i class="fa fa-bookmark" aria-hidden="true"></i>
             <span class="nav-link-text">Libros disponibles</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Relatos">
+          <a class="nav-link" href="/relatos">
+            <i class="fa fa-book" aria-hidden="true"></i>
+            <span class="nav-link-text">Relatos de usuarios</span>
           </a>
         </li>
       </ul>

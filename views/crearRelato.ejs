@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="aplicacion">
+
+<% include partials/head %>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top" ng-controller="Libros" ng-init="cargarLibros()">
+  <!-- Navigation-->
+  <% include partials/navBar %>
+
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/mislibros">BibliotecaT</a>
+        </li>
+        <li class="breadcrumb-item"><a href="/mislibros">Mi Perfil</a></li>
+        <li class="breadcrumb-item active">Crear relatos</li>
+      </ol>
+      <div class="row">
+        <div class="col-12">
+          <h1>Crear nuevo relato</h1>
+          <hr>
+          <div>
+            <% if(message.length >0) { %>
+              <div class="alert alert-danger">
+                <%= message %>
+              </div>  
+            <% } %>  
+            <form action="/crearRelato" method="post">
+              <div class="form-group">
+                <label for="titulo"><h5>Título del relato: </h5></label>
+                <input class="form-control" name="titulo" type="text" required>
+              </div>
+              <div class="form-group">
+                 <label for="titulo"><h5>Categoría: </h5></label><br>
+                 <input type="radio" name="categoria" value="Acción" class="categoria">Acción
+                 <input type="radio" name="categoria" value="Aventura" class="categoria">Aventura
+                 <input type="radio" name="categoria" value="Biográfico" class="categoria">Biográfico
+                 <input type="radio" name="categoria" value="Comedia" class="categoria">Comedia
+                 <input type="radio" name="categoria" value="Ficción" class="categoria">Ficción
+                 <input type="radio" name="categoria" value="Histórico" class="categoria">Histórico
+                 <input type="radio" name="categoria" value="Horror" class="categoria">Horror
+                 <input type="radio" name="categoria" value="Misterio" class="categoria">Misterio
+                 <input type="radio" name="categoria" value="Romance" class="categoria">Romance
+                 <input type="radio" name="categoria" value="Otros" class="categoria">Otros
+              </div>  
+              <div class="form-group">
+                <label for="relato"><h5>Relato: </h5></label><br>
+                <textarea name="textoRelato" placeholder="Escribe aquí tu relato" class="col-12" required></textarea>
+              </div>
+              <input type="submit" class="btn btn-primary btn-block col-2">
+            </form>
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div><!-- end class wrapper-->
+
+    <% include partials/footer %>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="vendor/datatables/jquery.dataTables.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="js/sb-admin-datatables.min.js"></script>
+</body>
+
+</html>

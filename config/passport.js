@@ -22,6 +22,7 @@ module.exports = (passport) =>{
     },
     
     function (req, email, password, done){
+      console.log("estoy dentro del post register");
       User.findOne({'email': email}, function(err,user){
           if (err){
               return done(err);
@@ -33,6 +34,9 @@ module.exports = (passport) =>{
               var newUser = new User();
               newUser.email = email;
               newUser.password = newUser.generateHash(password);
+              newUser.username = email.split('@',1);
+              newUser.picture = "https://gravatar.com/avatar/?s=200&d=retro";
+              newUser.nrelatos = 0;
               newUser.save(function(err){
                   if (err){ throw err;}
                   return done(null,newUser)
