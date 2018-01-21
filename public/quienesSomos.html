@@ -53,7 +53,7 @@
 
       <ul class="navbar-nav ml-auto">
         <li class="nav-itemt">
-          <a class="nav-link text-right" href="quienesSomos.html">¿Quiénes somos?</a>
+          <a class="nav-link text-right" href="/quienesSomos">¿Quiénes somos?</a>
         </li  
         <li class="nav-item">
           <a class="nav-link" href="/logout">
@@ -62,48 +62,20 @@
       </ul>
     </div>
   </nav>
-  <div class="content-wrapper">
-    <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Mis Libros</a>
-        </li>
-          <li class="breadcrumb-item active">Libros disponibles</li>
-      </ol>
-      <!-- Area Chart Example-->
-    <div class="card mb-3">
-        <div class="card-body">
-          <div class="card-group">
-            <div class="card-body">
-              <div class="form-group">
-                <label for="usr"> Buscar libros:</label>
-                <input type="text" class="form-control" id="searchTerm" placeholder="Introduce el título, la categoría, autor o descripción del libro a buscar" onkeyup="doSearch()">
-              </div>
-              <div class="table-responsive">
-                <table class="table table-bordered" id="datos" width="100%" cellspacing="0" >
-                  <thead>
-                    <tr>
-                      <th>Nombre</th>
-                      <th>Autor</th>
-                      <th>Categoría</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr ng-repeat="item in libros">
-                      <td>
-                        <form action="/mostrarLibro" method="post">
-                          <input type="submit" class="btn btn-link" name="libro" value="{{item.name}}">
-                        </form>
-                      </td>
-                      <td>{{item.autor}}</td>
-                      <td>{{item.categoria}}</td>
-                    </tr>
-                  </tbody>
-                </table>  
-              </div>
-          </div>
-        </div>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+         <h1>Proyecto BibliotecaT</h1>
+         <hr>
+         
+         <p><br>Esta aplicación web es el proyecto final de la asignatura Sistemas y tecnologías web, cuyo principal objetivo es ser un lugar de encuentro entre lectores de todos tipos a los que también les gusta escribir y compartir sus historias.
+         </p>
+         <p>Los usuarios tendrán que crear una cuenta para poder acceder a los recursos mediante un correo electrónico válido y, una vez se inicia sesión, se pueden crear relatos, compartirlos, leer los de otros usuarios y votarlos. Además, se puede
+         leer libros que están libres de derechos de autor.
+         </p>
+        
+         
+         
+    
       </div>
     </div>
     <!-- /.container-fluid-->

@@ -28,32 +28,36 @@
           </div>
         </div>
         <div class="col-6">
-          <h1>Mis relatos</h1>
-          <hr>
-          <strong>Número de relatos: </strong> <%= user.nrelatos %> <br>
-            <% if(relato) { %>
-              <strong>Relatos: <br></strong><br>
-                <div class="card-deck">
-                  <% for(var i=0;i<relato.length;i++){ %>
-                    <div class="card border-secondary mb-3">
-                      <div class="card-header">Categoría: <%= relato[i].categoria %></div>
-                      <div class="card-body">
-                        <h5 class="card-title"><%= relato[i].titulo %></h5>
-                        <p class="card-text"><%= relato[i].textoRelato %></p>
-                      </div>
-                      <div class="card-footer">
-                        <form action="/eliminarRelato" method="post">
-                          <input type="submit" class="btn btn-primary btn-block" name="relatoEliminar" value="Elimina <%= relato[i].titulo %>">
-                        </form>
-                      </div>
-                    </div>
-                    <% } %>
-                </div>
-            <% } %>
-            <br>
+            <h1>Mis relatos</h1>
             <hr>
             <h2>¿Te apetece escribir? <br></h2>
             <a class="nav-link" href="/crearRelato"><h4>Pincha aquí para crear un relato nuevo</h4></a>
+            <hr>
+            <strong>Número de relatos: </strong> <%= user.nrelatos %> <br>
+            <% if(relato) { %>
+              <% for(var i=0;i<relato.length;i++){ %>
+                <div class="row">
+                  <div class="col-12">
+                    <div class="card border-secondary mb-3 card-relatos">
+                      <div class="card-header">Categoría: <%= relato[i].categoria %></div>
+                        <div class="card-body">
+                          <h5 class="card-title"><%= relato[i].titulo %></h5>
+                          <p class="card-text"><%= relato[i].textoRelato %></p>
+                          <hr>
+                          <p class="card-text"><small>Positivos: <%= relato[i].positivo %></small></p>
+                          <p class="card-text"><small>Negativos: <%= relato[i].negativo %></small></p>
+                        </div>
+                        <div class="card-footer">
+                          <form action="/eliminarRelato" method="post">
+                            <input type="submit" class="btn btn-primary btn-block" name="relatoEliminar" value="Elimina <%= relato[i].titulo %>">
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+                <% } %>
+            <% } %>
+           </div>      
           </div>
         </div>
       </div>

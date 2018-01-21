@@ -49,9 +49,7 @@ module.exports = (app, passport) =>{
         
         User.findByIdAndUpdate(req.user.id, { $set: { username: newUsername }}, { new: true }, function (err, user) {
               if (err) return handleError(err);
-              res.render('mislibros',{
-              user: req.user , relato: req.relato
-    	     });
+              res.redirect('editProfile');
         });
     });
     
@@ -60,9 +58,7 @@ module.exports = (app, passport) =>{
         
         User.findByIdAndUpdate(req.user.id, { $set: { email: newEmail }}, { new: true }, function (err, user) {
               if (err) return handleError(err);
-              res.render('mislibros',{
-              user: req.user , relato: req.relato
-    	     });
+              res.redirect('editProfile');
         });
     });
     
@@ -71,9 +67,7 @@ module.exports = (app, passport) =>{
 
         User.findByIdAndUpdate(req.user.id, { $set: { picture: imgPerfil }}, { new: true }, function (err, user) {
               if (err) return handleError(err);
-              res.render('mislibros',{
-              user: req.user, relato: req.relato 
-    	     });
+              res.redirect('editProfile');
         });
     });
     
@@ -114,9 +108,7 @@ module.exports = (app, passport) =>{
                   if (err){ throw err;}
               });
           }
-          res.render('mislibros',{
-           user: req.user, relato: refrescarPagina(idUsuario)
-          });
+          res.redirect('mislibros');
         })  
     });
     
@@ -169,38 +161,49 @@ module.exports = (app, passport) =>{
     });
     
     app.post('/votarRelato', isLoggedIn, (req, res) => {
-        let voto = req.body.opinion;
-        let usuario = req.user.username;
-        let titulo = req.body.opinion.split(': ');
-
         
-        Voto.findOne({'titulo': titulo, 'usuario': usuario}, function(err,relato){
+        let parts = req.body.opinion.split(': ')
+        let usuario = req.user.username;
+        let titulo = parts[0];
+        let voto = parts[1];
+
+        console.log("Titulo", titulo)
+        console.log("Usuario", usuario)
+        console.log("Voto", voto)
+        Voto.findOne({'titulo': titulo, 'usuario': usuario}, function(err,votos){
           if (err){
               res.send(err);
           } 
-          if(usuario){
-              res.status(500).send({message: ` ${usuario} ya ha votado por el relato: ${titulo}. El voto no será tomado en cuenta`})
-          }
+//          if(usuario){
+//              console.log("Lucy está aquí")
+//              res.status(500).send({message: ` ${usuario} ya ha votado por el relato: ${titulo}. El voto no será tomado en cuenta`})
+//          }
           
           else{
-              if(voto == "Me gustó")
-              Relato.findByIdAndUpdate(req.relato.id, { $set: { positivo: positivo+1 }}, function (err, user) {
-              if (err) return err;
-              });
+              console.log("Entreeeee")
+              if(voto == "Me gustó"){
+                  Relato.findOne({'titulo': titulo}, function (err, relato) {
+                    if (err) return err;
+                    else{
+                        let positivo = relato.positivo+1;
+                        relato.update({$set: { positivo: positivo }}, function (err, user) {
+                            if (err) return err;
+                        });
+                    }
+                  });     
+              }    
               if(voto == "No me gustó")
-              Relato.findByIdAndUpdate(req.relato.id, { $set: { negativo: negativo+1 }}, function (err, user) {
-              if (err) return err;
-              });
-              var newVoto = new Voto();
-              newVoto.titulo = titulo;
-              newVoto.usuario = usuario;
-              newVoto.save(function(err){
-                  if (err){ throw err;}
-              });
-          }
-          res.render('mislibros',{
-           user: req.user, relato: refrescarPagina(req.user.id)
-          });
+                    Relato.findOne({'titulo': titulo}, function (err, relato) {
+                    if (err) return err;
+                    else{
+                        let positivo = relato.negativo+1;
+                        relato.update({$set: { negativo: negativo }}, function (err, user) {
+                            if (err) return err;
+                        });
+                    }
+                  });     
+              } 
+          res.redirect('relatos');
           
         })  
     });
@@ -214,11 +217,25 @@ module.exports = (app, passport) =>{
                res.render('relatos',{user: req.user, relato: relato });
             
           }
-            res.render('/relatos',{
-                relato: req.relato 
-            });   
+  
         });
-    });    
+    }); 
+    
+    app.get('/mostrarLibro',isLoggedIn, (req, res) => {
+        
+        res.render('mostrarLibro',{user: req.user});
+    }); 
+    
+    app.post('/mostrarLibro', isLoggedIn, (req, res) => {
+        let libro = req.body.libro;
+        
+        Libro.findOne({'name': libro}, function (err, libro) {
+                    if (err) return err;
+                    else{
+                        res.render('mostrarLibro',{libro: libro});
+                    }
+        });       
+    });
     
     app.get('/logout', (req, res) => {
         req.logout();
