@@ -46,7 +46,18 @@ mongoose.connect(url_login.url,{useMongoClient: true,}, (err,res) => {
 		console.log(`Error al conectar la base de datos: ${err}`)
 	}
 	console.log('Conexion a la base de datos establecida...')
-	app.listen(app.get('port'), function() {
-		console.log("Node app is running at localhost:" + app.get('port'));
-	});
+	
+	
+
+
+
+var server = app.listen(80, function () {
+
+  var host = server.address().address
+  var port = server.address().port
+
+  console.log('Example app listening at http://%s:%s', host, port)
+
+})
+
 });

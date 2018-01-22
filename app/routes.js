@@ -45,7 +45,7 @@ module.exports = (app, passport) =>{
     });
     
     app.post('/editUsername', isLoggedIn, (req, res) => {
-        let newUsername = req.body.username;
+        var newUsername = req.body.username;
         
         User.findByIdAndUpdate(req.user.id, { $set: { username: newUsername }}, { new: true }, function (err, user) {
               if (err) return handleError(err);
@@ -54,7 +54,7 @@ module.exports = (app, passport) =>{
     });
     
     app.post('/editEmail', isLoggedIn, (req, res) => {
-        let newEmail = req.body.newEmail;
+        var newEmail = req.body.newEmail;
         
         User.findByIdAndUpdate(req.user.id, { $set: { email: newEmail }}, { new: true }, function (err, user) {
               if (err) return handleError(err);
@@ -63,7 +63,7 @@ module.exports = (app, passport) =>{
     });
     
     app.post('/editImg', isLoggedIn, (req, res) => {
-        let imgPerfil = req.body.img;
+        var imgPerfil = req.body.img;
 
         User.findByIdAndUpdate(req.user.id, { $set: { picture: imgPerfil }}, { new: true }, function (err, user) {
               if (err) return handleError(err);
@@ -79,12 +79,12 @@ module.exports = (app, passport) =>{
     });
     
     app.post('/crearRelato', isLoggedIn, (req, res) => {
-        let titulo = req.body.titulo;
-        let textoRelato = req.body.textoRelato;
-        let idUsuario = req.user.id;
-        let usuario = req.user.username;
-        let nrelatos = req.user.nrelatos+1;
-        let categoria = req.body.categoria;
+        var titulo = req.body.titulo;
+        var textoRelato = req.body.textoRelato;
+        var idUsuario = req.user.id;
+        var usuario = req.user.username;
+        var nrelatos = req.user.nrelatos+1;
+        var categoria = req.body.categoria;
 
         Relato.findOne({'titulo': titulo}, function(err,relato){
           if (err){
@@ -129,9 +129,9 @@ module.exports = (app, passport) =>{
     });
     
     app.post('/eliminarRelato', isLoggedIn, (req, res) => {
-        let titulo = req.body.relatoEliminar.split('Elimina ');
-        let idUsuario = req.user.id;
-        let nrelatos = req.user.nrelatos-1;
+        var titulo = req.body.relatoEliminar.split('Elimina ');
+        var idUsuario = req.user.id;
+        var nrelatos = req.user.nrelatos-1;
         
         Relato.findOne({'titulo': titulo}, function(err,relato){
           if (err){
@@ -162,10 +162,10 @@ module.exports = (app, passport) =>{
     
     app.post('/votarRelato', isLoggedIn, (req, res) => {
         
-        let parts = req.body.opinion.split(': ')
-        let usuario = req.user.username;
-        let titulo = parts[0];
-        let voto = parts[1];
+        var parts = req.body.opinion.split(': ')
+        var usuario = req.user.username;
+        var titulo = parts[0];
+        var voto = parts[1];
 
         console.log("Titulo", titulo)
         console.log("Usuario", usuario)
@@ -185,7 +185,7 @@ module.exports = (app, passport) =>{
                   Relato.findOne({'titulo': titulo}, function (err, relato) {
                     if (err) return err;
                     else{
-                        let positivo = relato.positivo+1;
+                        var positivo = relato.positivo+1;
                         relato.update({$set: { positivo: positivo }}, function (err, user) {
                             if (err) return err;
                         });
@@ -196,7 +196,7 @@ module.exports = (app, passport) =>{
                     Relato.findOne({'titulo': titulo}, function (err, relato) {
                     if (err) return err;
                     else{
-                        let positivo = relato.negativo+1;
+                        var negativo = relato.negativo+1;
                         relato.update({$set: { negativo: negativo }}, function (err, user) {
                             if (err) return err;
                         });
@@ -227,7 +227,7 @@ module.exports = (app, passport) =>{
     }); 
     
     app.post('/mostrarLibro', isLoggedIn, (req, res) => {
-        let libro = req.body.libro;
+        var libro = req.body.libro;
         
         Libro.findOne({'name': libro}, function (err, libro) {
                     if (err) return err;
