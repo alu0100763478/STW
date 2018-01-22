@@ -1,6 +1,7 @@
 BibliotecaT. Proyecto final: Sistemas y tecnologías Web
 ---
 Nombre: Rossiel D. González Ramírez.
+
 Dirección del proyecto: [BibliotecaT](http://10.6.129.129)
 ## Objetivos
 
@@ -44,6 +45,7 @@ $ sudo apt-get install -y nodejs
 $ npm install
 ```
 Sin embargo, en ocasiones MongoDB no se instala correctamente por lo que, si ocurre algún problema en la instalación, es aconsejable seguir la guía de instalación de MongoDB [en este enlace](https://docs.mongodb.com/manual/installation/)
+
 4. Actualizar dependecias
 ```sh
 $ npm update

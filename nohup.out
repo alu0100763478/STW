@@ -255,3 +255,12 @@ estoy dentro del post register
 [0mGET /js/angular.min.js [36m304 [0m0.416 ms - -[0m
 [0mGET /vendor/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0 [36m304 [0m0.661 ms - -[0m
 [0mGET /favicon.ico [33m404 [0m0.652 ms - 150[0m
+[0mGET / [36m304 [0m1.227 ms - -[0m
+[0mGET /vendor/bootstrap/css/bootstrap.min.css [36m304 [0m0.670 ms - -[0m
+[0mGET /vendor/font-awesome/css/font-awesome.min.css [36m304 [0m0.656 ms - -[0m
+[0mGET /js/angular.min.js [36m304 [0m0.497 ms - -[0m
+[0mGET /css/sb-admin.css [36m304 [0m0.725 ms - -[0m
+[0mGET /css/profile.css [36m304 [0m0.579 ms - -[0m
+[0mGET /vendor/jquery/jquery.min.js [36m304 [0m0.543 ms - -[0m
+[0mGET /vendor/bootstrap/js/bootstrap.bundle.min.js [36m304 [0m0.633 ms - -[0m
+[0mGET /vendor/jquery-easing/jquery.easing.min.js [36m304 [0m0.516 ms - -[0m
